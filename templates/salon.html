@@ -1,0 +1,30 @@
+{% include 'includes/head.html' %}
+{% include 'includes/header.html' %}
+
+<section class="plant-page col-sm-12 text-center">
+    <h1>Salon #{{ salon.id }}</h1>
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="row">
+                <div class="group group-head col-sm-12">
+                    <div class="title">Name </div>
+                    <div class="content">City</div>
+                    <div class="content">Address</div>
+                </div>
+                <div class="group group-content col-sm-12 mg-bot-sm">
+                    <div class="title">{{ salon.name }} </div>
+                    <div class="content">{{ salon.city}}</div>
+                    <div class="content">{{ salon.address }} </div>
+                </div>
+                {% if session.get('user', False) %}
+                <div class="col-sm-12 text-center">
+                    <a href="{{ url_for('salon_edit_page', id=salon.id) }}" class="btn btn-info">Edit</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'includes/footer.html'%}

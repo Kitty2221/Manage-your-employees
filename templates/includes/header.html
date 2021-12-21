@@ -1,0 +1,56 @@
+<div class="container-fluid god-wrapper">
+    <header class="mg-bot-sm">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Manage your employees</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="menuList"></ul>
+
+
+                    {#                    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">#}
+                    <ul class="navbar-nav">
+                        {% if session.get('user', False) %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink"
+                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="text-white">Hello, {{ session.get('user')['name'] }}</div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark"
+                                    aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item"
+                                           href="{{ url_for('employee', id=session.get('user')['id']) }}">Edit
+                                        profile</a></li>
+                                    <li class="divider"></li>
+                                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                </ul>
+
+                                {% else %}
+                            <li class="nav-item dropdown">
+                                {#  <div class="login text-white"><a href="{{ url_for('login') }}">Login</a></div>#}
+                                <button type="button" class="btn btn-primary"><div class=""><a class="text-login" href="{{ url_for('login') }}">Log In</a></div></button>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="menuList"></ul>
+                    <form class="d-flex search-form">
+                        <input class="form-control me-2" id="searchInput" type="search" placeholder="Search" aria-label="Search" name="q">
+                        <ul id="searchResults" class="search-results hidden">
+{#                            <li></li>#}
+                        </ul>
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+
+
+
+                    </form>
+            </div>
+
+        </nav>
+    </header>
+</div>
